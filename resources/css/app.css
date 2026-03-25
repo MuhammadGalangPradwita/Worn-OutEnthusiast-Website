@@ -1,0 +1,166 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+
+    /* Dark colors based on Midnight Navy (#0E1320) and Deep Indigo (#1C2E5A) */
+    --color-denim-50: #f2ead7;
+    /* Warm Bone */
+    --color-denim-100: #e6d8b5;
+    /* Vintage Cream */
+    --color-denim-200: #c5bba3;
+    --color-denim-300: #8c9bbd;
+    --color-denim-400: #4a5c8c;
+    --color-denim-500: #1c2e5a;
+    /* Deep Indigo */
+    --color-denim-600: #17264a;
+    --color-denim-700: #121d3a;
+    --color-denim-800: #0e1320;
+    /* Midnight Navy */
+    --color-denim-900: #080a12;
+
+    --color-navy-50: #e6d8b5;
+    --color-navy-100: #d4c5a1;
+    --color-navy-200: #8596b8;
+    --color-navy-300: #4a5f8c;
+    --color-navy-400: #25396b;
+    --color-navy-500: #1c2e5a;
+    /* Deep Indigo */
+    --color-navy-600: #162447;
+    --color-navy-700: #111a36;
+    --color-navy-800: #0e1320;
+    /* Midnight Navy */
+    --color-navy-900: #080b14;
+
+    /* Accents */
+    --color-gold-400: #e6d8b5;
+    /* Map old gold to Vintage Cream */
+    --color-gold-500: #cbbd9b;
+
+    /* New Accents for future use */
+    --color-heritage-red: #c72222;
+    --color-leather-brown: #6a4b2f;
+    --color-vintage-cream: #e6d8b5;
+    --color-warm-bone: #f2ead7;
+}
+
+/* Custom Animations */
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(30, 58, 95, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(30, 58, 95, 0.6);
+    }
+}
+
+@keyframes count-tick {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@utility animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out both;
+}
+
+@utility animate-pulse-glow {
+    animation: pulse-glow 3s infinite;
+}
+
+@utility animate-count-tick {
+    animation: count-tick 0.3s ease-out;
+}
+
+@utility animation-delay-100 {
+    animation-delay: 0.1s;
+}
+
+@utility animation-delay-200 {
+    animation-delay: 0.2s;
+}
+
+@utility animation-delay-300 {
+    animation-delay: 0.3s;
+}
+
+@utility animation-delay-400 {
+    animation-delay: 0.4s;
+}
+
+/* Grayscale hover effect for sponsors */
+@utility sponsor-logo {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.4s ease;
+
+    &:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+}
+
+/* Gallery zoom effect */
+@utility gallery-zoom {
+    overflow: hidden;
+
+    & img {
+        transition: transform 0.5s ease;
+    }
+
+    &:hover img {
+        transform: scale(1.1);
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a1929;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e3a5f;
+    border-radius: 4px;
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+[x-cloak] {
+    display: none !important;
+}
