@@ -65,10 +65,13 @@
                     Enthusiast bersama Tim penilai. Kompetisi ini diselenggarakan secara online.
                 </p>
 
-                <a href="{{ route('register') }}"
-                    class="inline-flex items-center gap-2 px-8 py-3 bg-white text-denim-900 font-bold rounded-2xl transition-all duration-300 shadow-xl shadow-white/10 hover:bg-denim-100 hover:-translate-y-1">
-                    Daftar Sekarang
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a x-data="{ isExpired: new Date('{{ $settings['countdown_deadline'] ?? '2026-06-30 23:59:59' }}').getTime() <= new Date().getTime() }"
+                    @countdown-expired.window="isExpired = true"
+                    :href="isExpired ? 'javascript:void(0)' : '{{ route('register') }}'"
+                    :class="isExpired ? 'inline-flex items-center gap-2 px-8 py-3 bg-denim-800/50 text-denim-300/50 cursor-not-allowed font-bold rounded-2xl transition-all duration-300 border border-denim-600/30' : 'inline-flex items-center gap-2 px-8 py-3 bg-white text-denim-900 font-bold rounded-2xl transition-all duration-300 shadow-xl shadow-white/10 hover:bg-denim-100 hover:-translate-y-1'"
+                    @click="if(isExpired) $event.preventDefault()">
+                    <span x-text="isExpired ? 'Pendaftaran Ditutup' : 'Daftar Sekarang'">Daftar Sekarang</span>
+                    <svg x-show="!isExpired" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>

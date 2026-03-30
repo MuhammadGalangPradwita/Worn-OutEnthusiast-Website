@@ -55,6 +55,7 @@
                         const diff = target - now;
                         if (diff <= 0) {
                             this.expired = true;
+                            window.dispatchEvent(new CustomEvent('countdown-expired'));
                             clearInterval(this.interval);
                             return;
                         }

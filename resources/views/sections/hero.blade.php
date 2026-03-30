@@ -28,8 +28,12 @@
                 {{ 'Kompetisi denim lokal terbesar yang mempertemukan komunitas, brand lokal dan para enthusiast dalam perjalanan fade selama 6 bulan.' }}
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="{{ route('register') }}"
-                    class="px-10 py-4 bg-white text-denim-900 font-bold text-base rounded-xl hover:bg-denim-100 transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:-translate-y-0.5">
+                <a x-data="{ isExpired: new Date('{{ $settings['countdown_deadline'] ?? '2026-06-30 23:59:59' }}').getTime() <= new Date().getTime() }"
+                    @countdown-expired.window="isExpired = true"
+                    :href="isExpired ? 'javascript:void(0)' : '{{ route('register') }}'"
+                    :class="isExpired ? 'px-10 py-4 bg-denim-800/50 text-denim-300/50 cursor-not-allowed font-bold text-base rounded-xl transition-all duration-300 border border-denim-600/30' : 'px-10 py-4 bg-white text-denim-900 font-bold text-base rounded-xl hover:bg-denim-100 transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:-translate-y-0.5'"
+                    @click="if(isExpired) $event.preventDefault()"
+                    x-text="isExpired ? 'Pendaftaran Ditutup' : 'Daftar Sekarang'">
                     Daftar Sekarang
                 </a>
                 <a href="{{ route('recap') }}"

@@ -14,9 +14,9 @@
         <div class="text-center mb-12">
             
             <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4 leading-tight">
-                Siap memulai <br>
-                <span class="bg-gradient-to-r from-denim-300 to-denim-100 bg-clip-text text-transparent">perjalanan fade
-                    kamu?</span>
+                Siap Memulai <br>
+                <span class="bg-gradient-to-r from-denim-300 to-denim-100 bg-clip-text text-transparent">Perjalanan Fade
+                    Kamu?</span>
             </h2>
             <p class="text-denim-200 text-lg max-w-2xl mx-auto font-light">
                 Isi form di bawah ini untuk mendaftarkan diri Anda pada kompetisi Worn-Out Enthusiast VOL II.
@@ -265,14 +265,24 @@
             </div>
 
             {{-- Submit --}}
-            <div class="pt-2">
+            <div class="pt-2"
+                x-data="{ 
+                    isExpired: false,
+                    checkExpiry() {
+                        this.isExpired = new Date('{{ $settings['countdown_deadline'] ?? '2026-06-30 23:59:59' }}').getTime() <= new Date().getTime();
+                    }
+                }"
+                x-init="checkExpiry(); setInterval(() => checkExpiry(), 1000)"
+                @countdown-expired.window="isExpired = true">
                 <button type="submit"
-                    class="w-full md:w-auto inline-flex items-center justify-center gap-3 px-12 py-4 bg-white text-denim-900 font-bold text-base rounded-xl hover:bg-denim-100 transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:-translate-y-0.5">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    :disabled="isExpired"
+                    @click="if(isExpired) $event.preventDefault()"
+                    :class="isExpired ? 'w-full md:w-auto inline-flex items-center justify-center gap-3 px-12 py-4 bg-denim-800/50 text-denim-300/50 cursor-not-allowed font-bold text-base rounded-xl transition-all duration-300 border border-denim-600/30' : 'w-full md:w-auto inline-flex items-center justify-center gap-3 px-12 py-4 bg-white text-denim-900 font-bold text-base rounded-xl hover:bg-denim-100 transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:-translate-y-0.5'">
+                    <svg x-show="!isExpired" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                     </svg>
-                    Daftar sekarang
+                    <span x-text="isExpired ? 'Pendaftaran Ditutup' : 'Daftar sekarang'">Daftar sekarang</span>
                 </button>
             </div>
         </form>

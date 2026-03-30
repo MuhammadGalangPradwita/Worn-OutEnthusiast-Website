@@ -21,8 +21,20 @@
 <body class="bg-denim-900 text-white font-sans antialiased overflow-x-hidden">
     {{-- Navigation --}}
     <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-        x-data="{ scrolled: false, mobileOpen: false }"
-        x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 })"
+        x-data="{ 
+            scrolled: false, 
+            mobileOpen: false,
+            isExpired: false,
+            checkExpiry() {
+                this.isExpired = new Date('{{ $settings['countdown_deadline'] ?? '2026-06-30 23:59:59' }}').getTime() <= new Date().getTime();
+            }
+        }"
+        x-init="
+            window.addEventListener('scroll', () => { scrolled = window.scrollY > 50 });
+            checkExpiry();
+            setInterval(() => checkExpiry(), 1000);
+        "
+        @countdown-expired.window="isExpired = true"
         :class="scrolled ? 'bg-denim-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 lg:h-20">
@@ -48,8 +60,10 @@
                         class="text-sm font-medium text-denim-200 hover:text-white transition-colors">FAQ</a>
                     <!-- <a href="{{ route('recap') }}"
                         class="text-sm font-medium text-denim-200 hover:text-white transition-colors">Recap</a> -->
-                    <a href="{{ route('register') }}"
-                        class="px-6 py-2.5 bg-denim-500 hover:bg-denim-400 text-white text-sm font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-denim-500/25">
+                    <a :href="isExpired ? 'javascript:void(0)' : '{{ route('register') }}'"
+                        :class="isExpired ? 'px-6 py-2.5 bg-denim-800/50 text-denim-300/50 cursor-not-allowed border border-denim-600/30 text-sm font-semibold rounded-lg transition-all duration-300' : 'px-6 py-2.5 bg-denim-500 hover:bg-denim-400 text-white text-sm font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-denim-500/25'"
+                        @click="if(isExpired) $event.preventDefault()"
+                        x-text="isExpired ? 'Daftar' : 'Daftar'">
                         Daftar
                     </a>
                 </div>
@@ -90,8 +104,10 @@
                     class="block py-2 text-denim-200 hover:text-white transition-colors">FAQ</a>
                 <!-- <a href="{{ route('recap') }}" @click="mobileOpen = false"
                     class="block py-2 text-denim-200 hover:text-white transition-colors">Recap</a> -->
-                <a href="{{ route('register') }}" @click="mobileOpen = false"
-                    class="block py-3 bg-denim-500 text-center text-white font-semibold rounded-lg">Daftar</a>
+                <a :href="isExpired ? 'javascript:void(0)' : '{{ route('register') }}'"
+                    :class="isExpired ? 'block py-3 bg-denim-800/50 text-denim-300/50 cursor-not-allowed text-center font-semibold rounded-lg' : 'block py-3 bg-denim-500 text-center text-white font-semibold rounded-lg'"
+                    @click="if(isExpired) { $event.preventDefault(); } else { mobileOpen = false; }"
+                    x-text="isExpired ? 'Pendaftaran Ditutup' : 'Daftar'">Daftar</a>
             </div>
         </div>
     </nav>
