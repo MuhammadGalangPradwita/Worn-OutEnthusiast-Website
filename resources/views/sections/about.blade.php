@@ -9,11 +9,11 @@
             <p class="text-denim-400 text-sm tracking-[0.2em] uppercase font-medium mb-4 relative z-10">
                 Tentang Worn-Out Enthusiast
             </p>
-            <h2 class="font-display font-bold text-3xl md:text-5xl text-white mb-6 leading-tight relative z-10">
+            <!-- <h2 class="font-display font-bold text-3xl md:text-5xl text-white mb-6 leading-tight relative z-10">
                 Komunitas <span class="text-denim-300">Raw Denim</span> Lokal Terbesar
-            </h2>
+            </h2> -->
             <p class="text-denim-200 text-lg leading-relaxed relative z-10">
-                Worn-Out Enthusiast merupakan komunitas yang dibentuk dari sekumpulan denim heads Indonesia yang memiliki visi untuk memperkenalkan produk fashion lokal kepada masyarakat luas. Melalui kompetisi, edukasi dan kegiatan komunitas, WOE ingin menunjukkan bahwa brand lokal memiliki kualitas dan karakter yang mampu bersaing.
+                Worn-Out Enthusiast adalah komunitas yang dibentuk oleh para denimheads Indonesia menjadi organisasi dalam langkah memperkenalkan dan mengangkat brand lokal melalui kompetisi, edukasi dan aktivitas komunitas.
             </p>
             
             <!-- <div class="mt-8 flex flex-wrap gap-4 relative z-10">
@@ -26,7 +26,7 @@
 
         {{-- Right: Featured Video/Image Placeholder --}}
         <div class="relative rounded-3xl overflow-hidden border border-denim-700/50 group">
-            <img src="{{ asset('images/Non-Selvedge/1.JPG') }}" alt="Worn-Out Enthusiast Event" 
+            <img src="{{ asset('images/About/1.webp') }}" alt="Worn-Out Enthusiast Event" 
                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute inset-0 flex items-center justify-center">
             </div>
@@ -124,9 +124,10 @@
     <div class="grid lg:grid-cols-2 gap-16 items-center">
         {{-- Left: Text --}}
         <div>
-            <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-6">Inklusivitas Komunitas</h2>
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-6">Inklusivitas Organisasi</h2>
             <p class="text-denim-200 text-lg mb-8 leading-relaxed">
-                Komunitas kami adalah rumah bagi individu dari berbagai latar belakang yang dipersatukan oleh satu gairah: apresiasi terhadap kualitas dan seni denim lokal.
+                Organisasi kami adalah rumah bagi individu dari berbagai latar belakang yang dipersatukan oleh satu gairah apresiasi terhadap kualitas dan seni produk lokal.
+
             </p>
             <div class="grid grid-cols-2 gap-4">
                 @php
@@ -143,10 +144,10 @@
         {{-- Right: Supporting Photo composition --}}
         <div class="grid grid-cols-2 gap-4">
             <div class="rounded-2xl overflow-hidden aspect-square border border-denim-700/50">
-                <img src="{{ asset('images/Non-Selvedge/3.JPG') }}" alt="Community 1" onerror="this.src='https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=400';" class="w-full h-full object-cover">
+                <img src="{{ asset('images/About/2.webp') }}" alt="Community 1" onerror="this.src='" class="w-full h-full object-cover">
             </div>
             <div class="rounded-2xl overflow-hidden aspect-square border border-denim-700/50 mt-8">
-                <img src="{{ asset('images/Non-Selvedge/4.JPG') }}" alt="Community 2" onerror="this.src='https://images.unsplash.com/photo-1516583985823-52277d33d744?q=80&w=400';" class="w-full h-full object-cover">
+                <img src="{{ asset('images/About/3.webp') }}" alt="Community 2" onerror="this.src='" class="w-full h-full object-cover">
             </div>
         </div>
     </div>

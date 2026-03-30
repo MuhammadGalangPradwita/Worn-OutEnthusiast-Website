@@ -101,10 +101,10 @@
                         @error('instagram') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
                     <div>
-                        <label for="telegram" class="block text-sm text-denim-300 mb-2">ID/Username/No. Telp Telegram *</label>
+                        <label for="telegram" class="block text-sm text-denim-300 mb-2">No WhatsApp *</label>
                         <input type="text" name="telegram" id="telegram" value="{{ old('telegram') }}" required
                             class="w-full bg-denim-700/30 border border-denim-600/30 rounded-lg px-4 py-3 text-white text-sm placeholder-denim-500 focus:outline-none focus:border-denim-400 transition-colors"
-                            placeholder="Username / No. Telp">
+                            placeholder="No. WhatsApp">
                         @error('telegram') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
                 </div>
