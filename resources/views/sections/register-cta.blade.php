@@ -244,6 +244,13 @@
                                 </svg>
                                 <p class="text-denim-200 font-medium">Salwa Fadilla</p>
                             </div>
+                            
+                            <div class="flex items-start gap-2 pt-2 mt-2 border-t border-denim-600/30">
+                                <svg class="w-4 h-4 text-denim-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <p class="text-sm text-denim-300">Biaya registrasi VOL II sebesar <span class="font-bold text-white">Rp 200.000</span></p>
+                            </div>
                         </div>
 
                         <div class="hidden md:block">
