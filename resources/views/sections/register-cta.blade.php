@@ -79,15 +79,51 @@
                         <label for="shirt_size" class="block text-sm text-denim-300 mb-2">Size Baju *</label>
                         <select name="shirt_size" id="shirt_size" required
                             class="w-full bg-denim-700/30 border border-denim-600/30 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-denim-400 transition-colors">
-                            <option value="" class="bg-denim-800">Pilih Size Baju</option>
-                            <option value="S" {{ old('shirt_size') == 'S' ? 'selected' : '' }} class="bg-denim-800">S</option>
-                            <option value="M" {{ old('shirt_size') == 'M' ? 'selected' : '' }} class="bg-denim-800">M</option>
-                            <option value="L" {{ old('shirt_size') == 'L' ? 'selected' : '' }} class="bg-denim-800">L</option>
-                            <option value="XL" {{ old('shirt_size') == 'XL' ? 'selected' : '' }} class="bg-denim-800">XL</option>
-                            <option value="XXL" {{ old('shirt_size') == 'XXL' ? 'selected' : '' }} class="bg-denim-800">XXL</option>
-                            <option value="XXXL" {{ old('shirt_size') == 'XXXL' ? 'selected' : '' }} class="bg-denim-800">XXXL</option>
+                            <option value="" class="bg-denim-800">Pilih Size Baju (Panjang x Lebar)</option>
+                            <option value="S" {{ old('shirt_size') == 'S (66 Cm x 47 Cm)' ? 'selected' : '' }} class="bg-denim-800">S (66 Cm x 47 Cm)</option>
+                            <option value="M" {{ old('shirt_size') == 'M (69 Cm x 50 Cm)' ? 'selected' : '' }} class="bg-denim-800">M (69 Cm x 50 Cm)</option>
+                            <option value="L" {{ old('shirt_size') == 'L (72 Cm x 53 Cm)' ? 'selected' : '' }} class="bg-denim-800">L (72 Cm x 53 Cm)</option>
+                            <option value="XL" {{ old('shirt_size') == 'XL (74 Cm x 56 Cm)' ? 'selected' : '' }} class="bg-denim-800">XL (74 Cm x 56 Cm)</option>
+                            <option value="XXL" {{ old('shirt_size') == 'XXL (76 Cm x 59 Cm)' ? 'selected' : '' }} class="bg-denim-800">XXL (76 Cm x 59 Cm)</option>
+                            <option value="XXXL" {{ old('shirt_size') == 'XXXL (80 Cm x 62 Cm)' ? 'selected' : '' }} class="bg-denim-800">XXXL (80 Cm x 62 Cm)</option>
                         </select>
                         @error('shirt_size') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
+                    </div>
+                </div>
+
+                {{-- Dropdown Detail Kaos --}}
+                <div x-data="{ open: false }" class="bg-denim-700/30 border border-denim-600/30 rounded-lg overflow-hidden transition-all duration-300">
+                    <button @click="open = !open" type="button" class="w-full flex items-center justify-between px-4 py-3 text-sm text-denim-300 hover:bg-denim-600/50 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-denim-500/50">
+                        <span class="font-medium flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            Lihat Detail Kaos
+                        </span>
+                        <svg class="w-5 h-5 transform transition-transform duration-300" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition.opacity.duration.300ms class="p-4 border-t border-denim-600/30 bg-denim-800/50 text-center" style="display: none;">
+                        <div class="grid grid-cols-2 gap-4 w-full mb-3">
+                            <div class="relative rounded-lg overflow-hidden border border-denim-600/30 bg-navy-900/50 group flex items-center justify-center p-2">
+                                <img src="{{ asset('images/Design Baju/1.webp') }}"
+                                     alt="Mockup Kaos Putih"
+                                     class="max-w-full h-auto rounded"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e3a5f/8baacc?text=Mockup+Kaos+Belum+Tersedia&font=roboto';"
+                                >
+                            </div>
+                            <div class="relative rounded-lg overflow-hidden border border-denim-600/30 bg-navy-900/50 group flex items-center justify-center p-2">
+                                <img src="{{ asset('images/Design Baju/2.webp') }}"
+                                     alt="Mockup Kaos Hitam"
+                                     class="max-w-full h-auto rounded"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e3a5f/8baacc?text=Mockup+Kaos+Belum+Tersedia&font=roboto';"
+                                >
+                            </div>
+                        </div>
+                        <p class="text-xs text-denim-400">
+                            Detail desain mockup kaos.
+                        </p>
                     </div>
                 </div>
 
