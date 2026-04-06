@@ -14,7 +14,7 @@ class ParticipantController extends Controller
             'name' => 'required|string|max:255',
             'age' => 'required|integer|min:1|max:120',
             'gender' => 'required|string|in:Laki-laki,Perempuan',
-            'shirt_size' => 'required|string|in:S,M,L,XL,XXL,XXXL',
+            'shirt_size' => 'required|string|in:S Putih,M Putih,L Putih,XL Putih,XXL Putih,XXXL Putih,S Hitam,M Hitam,L Hitam,XL Hitam,XXL Hitam,XXXL Hitam',
             'instagram' => 'required|string|max:255',
             'telegram' => 'required|string|max:255',
             'address' => 'required|string',

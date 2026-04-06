@@ -80,12 +80,24 @@
                         <select name="shirt_size" id="shirt_size" required
                             class="w-full bg-denim-700/30 border border-denim-600/30 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-denim-400 transition-colors">
                             <option value="" class="bg-denim-800">Pilih Size Baju (Panjang x Lebar)</option>
-                            <option value="S" {{ old('shirt_size') == 'S (66 Cm x 47 Cm)' ? 'selected' : '' }} class="bg-denim-800">S (66 Cm x 47 Cm)</option>
-                            <option value="M" {{ old('shirt_size') == 'M (69 Cm x 50 Cm)' ? 'selected' : '' }} class="bg-denim-800">M (69 Cm x 50 Cm)</option>
-                            <option value="L" {{ old('shirt_size') == 'L (72 Cm x 53 Cm)' ? 'selected' : '' }} class="bg-denim-800">L (72 Cm x 53 Cm)</option>
-                            <option value="XL" {{ old('shirt_size') == 'XL (74 Cm x 56 Cm)' ? 'selected' : '' }} class="bg-denim-800">XL (74 Cm x 56 Cm)</option>
-                            <option value="XXL" {{ old('shirt_size') == 'XXL (76 Cm x 59 Cm)' ? 'selected' : '' }} class="bg-denim-800">XXL (76 Cm x 59 Cm)</option>
-                            <option value="XXXL" {{ old('shirt_size') == 'XXXL (80 Cm x 62 Cm)' ? 'selected' : '' }} class="bg-denim-800">XXXL (80 Cm x 62 Cm)</option>
+                            
+                            <optgroup label="─── SIZE CHART KAOS PUTIH ───" class="bg-denim-900 text-denim-400 font-bold border-t border-denim-600/30">
+                                <option value="S Putih" {{ old('shirt_size') == 'S Putih' ? 'selected' : '' }} class="bg-denim-800">S (66 Cm x 47 Cm)</option>
+                                <option value="M Putih" {{ old('shirt_size') == 'M Putih' ? 'selected' : '' }} class="bg-denim-800">M (69 Cm x 50 Cm)</option>
+                                <option value="L Putih" {{ old('shirt_size') == 'L Putih' ? 'selected' : '' }} class="bg-denim-800">L (72 Cm x 53 Cm)</option>
+                                <option value="XL Putih" {{ old('shirt_size') == 'XL Putih' ? 'selected' : '' }} class="bg-denim-800">XL (74 Cm x 56 Cm)</option>
+                                <option value="XXL Putih" {{ old('shirt_size') == 'XXL Putih' ? 'selected' : '' }} class="bg-denim-800">XXL (76 Cm x 59 Cm)</option>
+                                <option value="XXXL Putih" {{ old('shirt_size') == 'XXXL Putih' ? 'selected' : '' }} class="bg-denim-800">XXXL (80 Cm x 62 Cm)</option>
+                            </optgroup>
+                            
+                            <optgroup label="─── SIZE CHART KAOS HITAM ───" class="bg-denim-900 text-denim-400 font-bold border-t border-denim-600/30">
+                                <option value="S Hitam" {{ old('shirt_size') == 'S Hitam' ? 'selected' : '' }} class="bg-denim-800">S (66 Cm x 47 Cm)</option>
+                                <option value="M Hitam" {{ old('shirt_size') == 'M Hitam' ? 'selected' : '' }} class="bg-denim-800">M (69 Cm x 50 Cm)</option>
+                                <option value="L Hitam" {{ old('shirt_size') == 'L Hitam' ? 'selected' : '' }} class="bg-denim-800">L (72 Cm x 53 Cm)</option>
+                                <option value="XL Hitam" {{ old('shirt_size') == 'XL Hitam' ? 'selected' : '' }} class="bg-denim-800">XL (74 Cm x 56 Cm)</option>
+                                <option value="XXL Hitam" {{ old('shirt_size') == 'XXL Hitam' ? 'selected' : '' }} class="bg-denim-800">XXL (76 Cm x 59 Cm)</option>
+                                <option value="XXXL Hitam" {{ old('shirt_size') == 'XXXL Hitam' ? 'selected' : '' }} class="bg-denim-800">XXXL (80 Cm x 62 Cm)</option>
+                            </optgroup>
                         </select>
                         @error('shirt_size') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
