@@ -14,7 +14,6 @@ class ParticipantController extends Controller
             'name' => 'required|string|max:255',
             'age' => 'required|integer|min:1|max:120',
             'gender' => 'required|string|in:Laki-laki,Perempuan',
-            'shirt_size' => 'required|string|in:S Putih,M Putih,L Putih,XL Putih,XXL Putih,XXXL Putih,S Hitam,M Hitam,L Hitam,XL Hitam,XXL Hitam,XXXL Hitam',
             'instagram' => 'required|string|max:255',
             'telegram' => 'required|string|max:255',
             'address' => 'required|string',
@@ -28,6 +27,9 @@ class ParticipantController extends Controller
             'payment_proof' => 'required|image|max:5120',
         ]);
 
+        // Default value for shirt_size to prevent database errors
+        $validated['shirt_size'] = '-';
+
         if ($request->hasFile('photo_front')) {
             $validated['photo_front'] = $request->file('photo_front')->store('participants/photos', 'public');
         }
@@ -40,6 +42,6 @@ class ParticipantController extends Controller
 
         Participant::create($validated);
 
-        return redirect()->route('home', ['#register'])->with('registration_success', 'Pendaftaran berhasil! Tim kami akan segera memproses data Anda.');
+        return redirect()->back()->with('registration_success', 'Pendaftaran berhasil! Tim kami akan segera memproses data Anda.');
     }
 }

@@ -7,8 +7,8 @@
         </div>
     </div>
 
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-denim-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-navy-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-denim-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-navy-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
@@ -34,9 +34,26 @@
             </div>
         @endif
 
+        {{-- Error Message --}}
+        @if ($errors->any())
+            <div class="mb-8 p-5 bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl">
+                <div class="flex items-center gap-3 mb-2">
+                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                    <p class="font-bold">Mohon periksa kembali form Anda:</p>
+                </div>
+                <ul class="list-disc list-inside text-sm pl-2 space-y-1">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         {{-- Registration Form --}}
         <form action="{{ route('participant.store') }}" method="POST" enctype="multipart/form-data"
-            class="bg-denim-800/60 border border-denim-600/20 rounded-2xl p-6 md:p-10 backdrop-blur-sm space-y-8">
+            class="bg-denim-800/60 border border-denim-600/20 rounded-2xl p-6 md:p-10 space-y-8 relative z-50">
             @csrf
 
             {{-- 1. Data Diri Section --}}
@@ -258,16 +275,16 @@
                     <div>
                         <label for="photo_front" class="block text-sm text-denim-300 mb-2">Foto Celana Denim Tampak
                             Depan *</label>
-                        <input type="file" name="photo_front" id="photo_front" accept="image/*" required
-                            class="w-full bg-denim-700/30 border border-denim-600/30 rounded-lg px-4 py-3 text-white text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-denim-500 file:text-white hover:file:bg-denim-400 focus:outline-none focus:border-denim-400 transition-colors">
+                        <input type="file" name="photo_front" id="photo_front" accept="image/*" required style="position: relative; z-index: 9999; cursor: pointer;"
+                            class="w-full bg-denim-700/30 border border-denim-600/30 rounded-lg px-4 py-2 text-white text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-denim-500 file:text-white hover:file:bg-denim-400 focus:outline-none focus:border-denim-400 transition-colors">
                         @error('photo_front') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
                         <label for="photo_back" class="block text-sm text-denim-300 mb-2">Foto Celana Denim Tampak
                             Belakang *</label>
-                        <input type="file" name="photo_back" id="photo_back" accept="image/*" required
-                            class="w-full bg-denim-700/30 border border-denim-600/30 rounded-lg px-4 py-3 text-white text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-denim-500 file:text-white hover:file:bg-denim-400 focus:outline-none focus:border-denim-400 transition-colors">
+                        <input type="file" name="photo_back" id="photo_back" accept="image/*" required style="position: relative; z-index: 9999; cursor: pointer;"
+                            class="w-full bg-denim-700/30 border border-denim-600/30 rounded-lg px-4 py-2 text-white text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-denim-500 file:text-white hover:file:bg-denim-400 focus:outline-none focus:border-denim-400 transition-colors">
                         @error('photo_back') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
                 </div>
@@ -358,8 +375,8 @@
 
                 <div>
                     <label for="payment_proof" class="block text-sm text-denim-300 mb-2">Foto Bukti Pembayaran *</label>
-                    <input type="file" name="payment_proof" id="payment_proof" accept="image/*" required
-                        class="w-full bg-denim-700/30 border border-denim-600/30 rounded-lg px-4 py-3 text-white text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-denim-500 file:text-white hover:file:bg-denim-400 focus:outline-none focus:border-denim-400 transition-colors">
+                    <input type="file" name="payment_proof" id="payment_proof" accept="image/*" required style="position: relative; z-index: 9999; cursor: pointer;"
+                        class="w-full bg-denim-700/30 border border-denim-600/30 rounded-lg px-4 py-2 text-white text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-denim-500 file:text-white hover:file:bg-denim-400 focus:outline-none focus:border-denim-400 transition-colors">
                     @error('payment_proof') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
             </div>
